@@ -25,7 +25,7 @@ Debug.Log("Running");
 
 function Update () {
 	var go = GameObject.Find(gameReceiver);
-	go.transform.Rotate(0, yRot, 0);
+	//go.transform.Rotate(0, yRot, 0);
 }
 
 //These functions are called when messages are received
@@ -37,14 +37,16 @@ public function AllMessageHandler(oscMessage: OscMessage){
 	var msgString = Osc.OscMessageToString(oscMessage); //the message and value combined
 	var msgAddress = oscMessage.Address; //the message parameters
 	var msgValue = oscMessage.Values[0]; //the message value
-	Debug.Log(msgString); //log the message and values coming from OSC
+	//Debug.Log(msgString); //log the message and values coming from OSC
 
 	//FUNCTIONS YOU WANT CALLED WHEN A SPECIFIC MESSAGE IS RECEIVED
 	switch (msgAddress){
-		case "/1/xyz":
+		case "/accxyz":
+			//Debug.Log(msgValue);
+			break;
+		case "/yRotationRate":
 			Debug.Log(msgValue);
 			break;
-		
 		default:
 			Debug.Log("Receives something");
 			Rotate(msgValue);

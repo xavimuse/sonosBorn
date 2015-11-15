@@ -41,16 +41,23 @@ public function AllMessageHandler(oscMessage: OscMessage){
 
 	//FUNCTIONS YOU WANT CALLED WHEN A SPECIFIC MESSAGE IS RECEIVED
 	switch (msgAddress){
-		case "/accxyz":
-			//Debug.Log(msgValue);
-			break;
-		case "/yRotationRate":
-			Debug.Log(msgValue);
-			break;
-		default:
+		case "/gyro":
+		    var pitch : float =  oscMessage.Values[0];
+		    var roll : float =  oscMessage.Values[1];
+		    var yaw : float =  oscMessage.Values[2];
+		    Debug.Log("pitch: " + pitch*100 + "roll: " + roll*100 + "yaw: " + yaw*100);
+		    //Debug.Log(msgValue*360);
+		    break;
+	    /*case "/accxyz":
+	        var accX : float =  oscMessage.Values[0];
+	        var accY : float =  oscMessage.Values[1];
+	        var accZ : float =  oscMessage.Values[2];
+	        Debug.Log(accX + ", " + accY + ", "  + accZ);
+			break;*/
+		/*default:
 			Debug.Log("Receives something");
 			Rotate(msgValue);
-			break;
+			break;*/
 	}
 
 }
